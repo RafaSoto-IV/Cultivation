@@ -1,0 +1,78 @@
+#container
+{
+text-align: center;
+width: 90%;
+margin: 10px auto;
+background-color: #FBEAEB;
+color: #2F3C7E;
+border: 1px solid black;
+line-height: 130%;
+}
+#top
+{
+padding: 1.5em;
+background-color: #FBEAEB;
+border-bottom: 1px solid black;
+align-content: center;
+}
+#top h1
+{
+padding: 0;
+margin: 0;
+}
+#top img
+{
+align-content: left;
+}
+#leftnav
+{
+float: Top;
+font-size: 1.3em;
+margin: 0px;
+padding: 1.5em;
+background-color: #FBEAEB;
+border-bottom: 1px solid black;
+align-content: center;
+}
+#rightnav
+{
+float: right;
+width: 160px;
+margin: 0px;
+padding: 1em;
+background-color: #FBEAEB;
+}
+#content
+{
+text-align: center;
+margin-left: 200px;
+border-left: 1px solid black;
+margin-right: 200px;
+border-right: 1px solid black;
+padding: 5em;
+max-width: 200em;
+background-color: #FBEAEB;
+border-bottom: 1px solid black;
+}
+#headlines
+{
+text-align: center;
+margin-left: 200px;
+border-left: 1px solid black;
+margin-right: 200px;
+border-right: 1px solid black;
+padding: 5em;
+max-width: 200em;
+background-color: #FBEAEB
+}
+#footer
+{
+clear: both;
+margin: 0;
+padding: .5em;
+color: #333;
+background-color: #ddd;
+border-top: 1px solid black;
+}
+#leftnav p, #rightnav p { margin: 0 0 1em 0; }
+#content h2 { margin: 0 0 .5em 0; }
