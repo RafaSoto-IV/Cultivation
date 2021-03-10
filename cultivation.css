@@ -13,18 +13,16 @@ line-height: 130%;
 padding: 1.5em;
 background-color: #FBEAEB;
 border-bottom: 1px solid black;
-align-content: center;
-}
-#top h1
-{
+align-content: left;
 padding: 0;
 margin: 0;
 }
-#top img
+/* #top h1
 {
-align-content: left;
-}
-#leftnav
+padding: 0;
+margin: 0;
+} */
+#navbar
 {
 float: Top;
 font-size: 1.3em;
