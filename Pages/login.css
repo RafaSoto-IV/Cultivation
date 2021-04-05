@@ -5,16 +5,13 @@
   width: 310px;
   background: white;
   border-radius: 3px;
+  text-align: center;
 
 }
 
 .container h1 {
-    text-align:center;
+    text-align: center;
 }
-.container button {
-    margin: 0 auto;
-}
-
 body {
     background-color: #FBEAEB;
 }
