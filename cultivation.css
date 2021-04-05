@@ -51,7 +51,7 @@ header {
     padding: 1em;
 }
 
-.content {
+/* #content {
     margin-left: 200px;
     font-size: 200%;
     line-height: 200%;
@@ -63,7 +63,7 @@ header {
     background-color: #A0ECD0;
     border-bottom: 1px solid black;
     text-align: center;
-}
+} */
 
 #headlines {
     text-align: center;

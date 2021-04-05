@@ -15,7 +15,7 @@ class Plant{
     this.frame += 1;
     if (this.frame > this.cap){
       this.frame = this.cap;
-      document.getElementById(this.plant_name + 'done').innerHTML = 'DONE!';
+      // document.getElementById(this.plant_name + 'done').innerHTML = 'DONE!';
       clear(timer);
     }
     this.level = "../Photos/" + this.plant_name + "/tile" + this.frame + ".png";
@@ -85,18 +85,18 @@ function check(left, top){
 
   console.log(l[0], t[0])
 
-	if(t[0] > 500 && t[0] < 1000 ){
-    if (l[0] > 450 && l[0] < 950) {
+	if(t[0] > 450 && t[0] < 950){
+    if (l[0] > 0 && l[0] < 500) {
       water(plant1)
     }
   }
-  if(t[0] > 1000 && t[0] < 1500 ){
-    if (l[0] > 450 && l[0] < 950) {
+  if(t[0] > 450 && t[0] < 950 ){
+    if (l[0] > 500 && l[0] < 1000) {
       water(plant2)
     }
   }
-  if(t[0] > 1500 && t[0] < 2000 ){
-    if (l[0] > 450 && l[0] < 950) {
+  if(t[0] > 450 && t[0] < 950 ){
+    if (l[0] > 1000 && l[0] < 5000) {
       water(plant3)
     }
   }
