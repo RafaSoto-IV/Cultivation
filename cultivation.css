@@ -34,7 +34,7 @@ header {
 #navbar {
     text-align: center;
     float: Top;
-    font-size: 1.3em;
+    font-size: 100%;
     margin: 0px;
     padding: 1.5em;
     background-color: #FBEAEB;
@@ -62,6 +62,38 @@ header {
     max-width: 200em;
     background-color: #A0ECD0;
     border-bottom: 1px solid black;
+}
+
+.cardContainer {
+    margin-left: 200px;
+    line-height: 200%;
+    border-left: 1px solid black;
+    margin-right: 200px;
+    border-right: 1px solid black;
+    padding: 25px;
+    max-width: 200em;
+    background-color: #A0ECD0;
+    border-bottom: 1px solid black;
+}
+
+.plantCard {
+    border:2px solid darkslategrey;
+    background-color:mediumaquamarine;
+    border-radius:5px;
+    padding:25px;
+    font-size:150%;
+    height:200px;
+    margin-bottom:25px;
+}
+
+.plantPic {
+    max-height:100%;
+    padding:5px;
+    border-radius:10px;
+    background-color:blanchedalmond;
+    float:left;
+    vertical-align:middle;
+    margin-right:25px;
 }
 
 #headlines {
