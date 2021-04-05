@@ -1,3 +1,6 @@
+var plant1;
+var plant2;
+
 class Plant{
   constructor(plant, string, cap){
     this.plant = plant;
@@ -75,18 +78,20 @@ function dropper(event) {
 
 function check(left, top){
 
-  console.log(left, top)
-  /*
-	if(top > imageTop && top < imageBottom ){
-    else if (left > imageLeft && left < imageRight) {
-      water()
-    }
+  l = String(left).split("px")
+  t = String(top).split("px")
 
+  console.log(l[0], t[0])
+
+	if(t[0] > 430 && t[0] < 930 ){
+    if (l[0] > 0 && l[0] < 500) {
+      water(plant1)
+    }
   }
-  */
+
 
 }
 
-function water(){
-  alert("You watered the can!")
+function water(plant){
+  plant.frameup
 }
