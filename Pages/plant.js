@@ -11,6 +11,7 @@ class Plant{
     this.frame += 1;
     if (this.frame > this.cap){
       this.frame = this.cap;
+      document.getElementById(this.plant_name + 'done').innerHTML = 'DONE!';
     }
     this.level = "../Photos/" + this.plant_name + "/tile" + this.frame + ".png";
     document.getElementById(this.plant_name).src = this.level;

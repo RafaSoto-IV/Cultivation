@@ -62,6 +62,7 @@ header {
     max-width: 200em;
     background-color: #A0ECD0;
     border-bottom: 1px solid black;
+    text-align: center;
 }
 
 #headlines {
