@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<title>Register Account</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Login Validator">
+	<meta name="author" content="Gavin Clarkson">
+    
+    <link rel="stylesheet" href="HW7.css">
+</head> 
+
+<body>
+    <h1>Gavin Clarkson's Cool Login Validator</h1>
+    <script language="Javascript">
+        function validate() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var repeat = document.getElementById("repeat").value;
+
+            function validate_username(username) {
+                if ((username.length < 6) || (username.length > 10)) {
+                    return false;
+                }
+                if (!username.match(/^[0-9a-zA-Z]+$/)) {
+                    return false;
+                }
+                if (!isNaN(parseInt(username.charAt(0)))) {
+                    return false;
+                }
+                return true;
+            }
+            function validate_passwords(password, repeat) {
+                if (password !== repeat) {
+                    return false;
+                }
+                if ((password.length < 6) || (password.length > 10)) {
+                    return false;
+                }
+                if (!password.match(/^[0-9a-zA-Z]+$/)) {
+                    return false;
+                }
+                var i = 0;
+                var hasNum = false;
+                var hasLower = false;
+                var hasUpper = false;
+                while(i < password.length) {
+                    var character = password.charAt(i);
+                    if (!isNaN(parseInt(character))) {
+                        hasNum = true;
+                    }
+                    if ((isNaN(parseInt(character))) && (character === character.toLowerCase())) {
+                        hasLower = true;
+                    }
+                    if ((isNaN(parseInt(character))) && (character === character.toUpperCase())) {
+                        hasUpper = true;
+                    }
+                    i++;
+                }
+                if (!hasNum || !hasLower || !hasUpper) {
+                    return false;
+                } 
+                return true; 
+            }
+            var checkUsername = validate_username(username);
+            var checkPasswords = validate_passwords(password, repeat);
+            if (!checkUsername || !checkPasswords) {
+                alert("Invalid username or password");
+            } else {
+                alert("User Validated");
+            }
+        }
+    </script>
+    <div id="container" class="container">
+        <h2>Login Validator</h2>
+        <form id="form" onsubmit="validate()">
+
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username"><br>
+            <div class="username">
+                <ul>
+                    <li>The username must be between 6 and 10 characters long, inclusive.</li>
+                    <li>The username must contain only letters and digits.</li>
+                    <li>The username cannot begin with a digit.</li>
+                </ul>
+            </div>
+
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br>
+            
+            <label for="repeat">Repeat Password:</label><br>
+            <input type="password" id="repeat" name="repeat"><br>
+            <br>
+            <input type="reset">
+            <input type="submit" value="submit">
+        </form>
+    </div>
+
+</body>
+</html>
