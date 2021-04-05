@@ -1,5 +1,6 @@
 var plant1;
 var plant2;
+var timer = setInterval(check, 3000)
 
 class Plant{
   constructor(plant, string, cap){
@@ -15,6 +16,7 @@ class Plant{
     if (this.frame > this.cap){
       this.frame = this.cap;
       document.getElementById(this.plant_name + 'done').innerHTML = 'DONE!';
+      clear(timer);
     }
     this.level = "../Photos/" + this.plant_name + "/tile" + this.frame + ".png";
     document.getElementById(this.plant_name).src = this.level;
@@ -83,12 +85,21 @@ function check(left, top){
 
   console.log(l[0], t[0])
 
-	if(t[0] > 430 && t[0] < 930 ){
-    if (l[0] > 0 && l[0] < 500) {
+	if(t[0] > 500 && t[0] < 1000 ){
+    if (l[0] > 450 && l[0] < 950) {
       water(plant1)
     }
   }
-
+  if(t[0] > 1000 && t[0] < 1500 ){
+    if (l[0] > 450 && l[0] < 950) {
+      water(plant2)
+    }
+  }
+  if(t[0] > 1500 && t[0] < 2000 ){
+    if (l[0] > 450 && l[0] < 950) {
+      water(plant3)
+    }
+  }
 
 }
 
