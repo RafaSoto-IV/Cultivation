@@ -93,5 +93,5 @@ function check(left, top){
 }
 
 function water(plant){
-  plant.frameup
+  plant.frameup();
 }
