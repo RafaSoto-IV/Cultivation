@@ -122,3 +122,8 @@ header {
 #content h2 { 
     margin: 0 0 .5em 0; 
 }
+
+#water{
+  height: 100px;
+  width: 100px;
+}
