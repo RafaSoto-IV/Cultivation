@@ -33,9 +33,10 @@ class Plant{
 }
 
 function classify(){
-  plant1 = new Plant(plant1, 'plant1', 8);
-  plant2 = new Plant(plant2, 'plant2', 14);
-  plant3 = new Plant(plant3, 'plant3', 21);
+  plant1 = new Plant(plant1, 'plant1', 5);
+  plant2 = new Plant(plant2, 'plant2', 4);
+  plant3 = new Plant(plant3, 'plant3', 4);
+  plant4 = new Plant(plant4, 'plant4', 4);
 }
 
 // The event handler function for grabbing the word
@@ -85,19 +86,24 @@ function check(left, top){
 
   console.log(l[0], t[0])
 
-	if(t[0] > 450 && t[0] < 950){
-    if (l[0] > 0 && l[0] < 500) {
+	if(t[0] > 400 && t[0] < 650){
+    if (l[0] > 0 && l[0] < 250) {
       water(plant1)
     }
   }
-  if(t[0] > 450 && t[0] < 950 ){
-    if (l[0] > 500 && l[0] < 1000) {
+  if(t[0] > 400 && t[0] < 650 ){
+    if (l[0] > 250 && l[0] < 500) {
       water(plant2)
     }
   }
-  if(t[0] > 450 && t[0] < 950 ){
-    if (l[0] > 1000 && l[0] < 5000) {
+  if(t[0] > 400 && t[0] < 650 ){
+    if (l[0] > 500 && l[0] < 750) {
       water(plant3)
+    }
+  }
+  if(t[0] > 400 && t[0] < 650 ){
+    if (l[0] > 750 && l[0] < 1000) {
+      water(plant4)
     }
   }
 
