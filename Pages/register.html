@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<title>Register Account</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Registration page">
+	<meta name="author" content="Gavin Clarkson">
+    <script src="register.js"></script>
+    <link rel="stylesheet" href="register.css">
+</head> 
+
+<body>
+    
+    <div id="container" class="container">
+        <h1>Create an Account at Shrubs!</h1>
+        <form id="form">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username"><br>
+            <ul style="font-size:11pt;">
+                <li>The username must be between 6 and 10 characters long, inclusive.</li>
+                <li>The username must contain only letters and digits.</li>
+                <li>The username cannot begin with a digit.</li>
+            </ul>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br>
+            <ul style="font-size:11pt;">
+                <li>The password and the repeat password must match.</li>
+                <li>The password must be between 6 and 10 characters long, inclusive.</li>
+                <li>The password must contain only letters and digits.</li>
+                <li>The password must have at least one lower case letter, at least one upper case letter, and at least one digit.</li>
+            </ul>
+            <label for="repeat">Repeat Password:</label><br>
+            <input type="password" id="repeat" name="repeat"><br>
+            <br>
+            <input type="reset">
+            <input type="button" value="submit" onclick="validate()">
+        </form>
+    </div>
+
+</body>
+</html>

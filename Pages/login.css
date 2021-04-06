@@ -1,0 +1,17 @@
+.container{
+    position: relative;
+  margin: 30px auto;
+  padding: 20px 20px 20px;
+  width: 310px;
+  background: white;
+  border-radius: 3px;
+  text-align: center;
+
+}
+
+.container h1 {
+    text-align: center;
+}
+body {
+    background-color: #FBEAEB;
+}

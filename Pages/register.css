@@ -1,0 +1,20 @@
+.container{
+    position: relative;
+  margin: 30px auto;
+  padding: 20px 20px 20px;
+  width: 310px;
+  background: white;
+  border-radius: 3px;
+
+}
+
+.container h1 {
+    text-align:center;
+}
+.container button {
+    margin: 0 auto;
+}
+
+body {
+    background-color: #FBEAEB;
+}
