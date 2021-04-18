@@ -22,7 +22,7 @@ var description = new Array(
     "Known scientifically as pastinaca sativa, parsnips are an early spring crop that take approximately 16 weeks to mature. Parsnips need full or partial sunlight, and are great for colder climate regions.",
     "Known scientifically as rheum rhabarbarum, rhubarb is a perennial crop that takes approximately 5 weeks to mature. Rhubarb is very pest resistant, although weeding is required to keep the plant healthy. Rhubarb needs plenty of sunlight and moderate climates.",
     "Known scientifically as solanum lycopersicum, tomatoes are an early summer crop that take anywhere from 8 to 16 weeks to mature. Tomatoes need full sunlight for at least 6 hours a day, and need warm growing conditions to thrive.",
-    "Known scientifically as tulipa, tulips are an early spring crop that need to be planted in the cold. Bulbscan also be refrigerated before planting in warmer areas. Tulips need full or partial sunlight, and are great for colder climate regions."
+    "Known scientifically as tulipa, tulips are an early spring crop that need to be planted in the cold. Bulbs can also be refrigerated before planting in warmer areas. Tulips need full or partial sunlight, and are great for colder climate regions."
 );
 
 var randomize = new Array(
