@@ -15,3 +15,15 @@
 body {
     background-color: #FBEAEB;
 }
+
+form {
+	position: sticky;
+	width: 40%;
+	margin-left: auto;
+	margin-right: auto;
+  	height: auto;
+	border-style: groove;
+	background-color: #0f4233;
+	border-color: #d3f2e9;
+
+}
