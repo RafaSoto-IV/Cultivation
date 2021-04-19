@@ -1,14 +1,18 @@
-var plant1;
-var plant2;
+var found_plant = document.getElementsByClassName('plant');
 var timer = setInterval(check, 3000)
-
+$(function() {
+  reveal = function($frame){
+    $("#information" + $frame).fadeIn('fast');
+  }
+})
 class Plant{
   constructor(plant, string, cap){
     this.plant = plant;
     this.plant_name = string;
     this.frame = 0;
     this.cap = cap;
-    this.level = "../Photos/" + this.plant_name + "/tile" + this.frame + ".png";
+    this.exists = true;
+    this.level = "../../Photos/" + this.plant_name + "/tile" + this.frame + ".png";
     document.getElementById(this.plant_name).src = this.level;
   }
   frameup(){
@@ -16,27 +20,26 @@ class Plant{
     if (this.frame > this.cap){
       this.frame = this.cap;
       // document.getElementById(this.plant_name + 'done').innerHTML = 'DONE!';
-      clear(timer);
+      clearInterval(timer);
+    }else{
+      reveal(this.frame);
     }
-    this.level = "../Photos/" + this.plant_name + "/tile" + this.frame + ".png";
+    this.level = "../../Photos/" + this.plant_name + "/tile" + this.frame + ".png";
     document.getElementById(this.plant_name).src = this.level;
-    console.log(document.getElementById(this.plant_name));
+    //console.log(document.getElementById(this.plant_name));
   }
   framedown(){
-    this.frame -= 1;
     if(this.frame < 0){
       this.frame = 0;
+    } else{
+      this.frame -= 1;
     }
-    this.level = "../Photos/" + this.plant_name + "/tile" + this.frame + ".png";
+    this.level = "../../Photos/" + this.plant_name + "/tile" + this.frame + ".png";
     document.getElementById(this.plant_name).src = this.level;
   }
 }
-
-function classify(){
-  plant1 = new Plant(plant1, 'plant1', 5);
-  plant2 = new Plant(plant2, 'plant2', 4);
-  plant3 = new Plant(plant3, 'plant3', 4);
-  plant4 = new Plant(plant4, 'plant4', 4);
+function cultivate(plant){
+  kale = new Plant(plant, 'kale', 4);
 }
 
 // The event handler function for grabbing the word
@@ -84,31 +87,18 @@ function check(left, top){
   l = String(left).split("px")
   t = String(top).split("px")
 
-  console.log(l[0], t[0])
+  //console.log(l[0], t[0])
 
 	if(t[0] > 400 && t[0] < 650){
     if (l[0] > 0 && l[0] < 250) {
-      water(plant1)
-    }
-  }
-  if(t[0] > 400 && t[0] < 650 ){
-    if (l[0] > 250 && l[0] < 500) {
-      water(plant2)
-    }
-  }
-  if(t[0] > 400 && t[0] < 650 ){
-    if (l[0] > 500 && l[0] < 750) {
-      water(plant3)
-    }
-  }
-  if(t[0] > 400 && t[0] < 650 ){
-    if (l[0] > 750 && l[0] < 1000) {
-      water(plant4)
+      //console.log(found_plant.id);
+      water()
     }
   }
 
 }
 
-function water(plant){
-  plant.frameup();
+function water(){
+  // console.log(kale.plant_name);
+  kale.frameup();
 }
