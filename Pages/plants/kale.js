@@ -89,8 +89,8 @@ function check(left, top){
 
   //console.log(l[0], t[0])
 
-	if(t[0] > 400 && t[0] < 650){
-    if (l[0] > 0 && l[0] < 250) {
+  if(t[0] > 400 && t[0] < 650){
+    if (l[0] > 650 && l[0] < 900) {
       //console.log(found_plant.id);
       water()
     }
