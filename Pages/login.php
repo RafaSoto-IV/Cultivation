@@ -15,25 +15,12 @@
   if($_SERVER["REQUEST_METHOD"]=="POST"){
 	# get the incoming information
  	$name = $_POST["username"];
-<<<<<<< Updated upstream
-  $pass = $_POST["password"];
-  }
-
-  $init_state = '$_GET[init_state]'
-
- if ($init_state == "login") {
-     login();
- }elseif ($init_state == "register") {
-     register();
- }
-=======
   	$pass = $_POST["password"];
 	setcookie("user_name", $name, time()+1000, "/");
   }
 
   
 
->>>>>>> Stashed changes
 
  if (isset($_POST["login"]))
  {
@@ -44,25 +31,17 @@
     		if("$name:$pass \n" == $line){
 			$correct = true;
 			break;
-<<<<<<< Updated upstream
-    		} 
-=======
 		}	
->>>>>>> Stashed changes
    	}
    	fclose ($fh);
    }
 
    if($correct){
-<<<<<<< Updated upstream
-	confirmPage($name, $pass);
-=======
 	if(isset($_COOKIE["page"])){
 		header("Location: ".$_COOKIE["page"]);
 	}else{
 		header("Location: ../home.html");
 	}
->>>>>>> Stashed changes
    } else {
 	echo "<p>wrong username or password. try again.<p>";
 	login();
@@ -99,12 +78,7 @@
 		fwrite ($fh, "$name:$pass \n");
 		fclose ($fh);
 	}
-<<<<<<< Updated upstream
-	confirmPage($name, $pass);
-
-=======
 	header("Location: ../home.html");	
->>>>>>> Stashed changes
    } 
  }
   else
@@ -186,15 +160,6 @@ BOTTOM;
         var msg = document.getElementById("username_text");
         var username = document.getElementById("username").value;
         if ((username.length < 6) || (username.length > 10)) {
-<<<<<<< Updated upstream
-            msg.innerHTML = "Invalid Username";
-        }
-        if (!username.match(/^[0-9a-zA-Z]+$/)) {
-            msg.innerHTML = "Invalid Username";
-        }
-        if (!isNaN(parseInt(username.charAt(0)))) {
-            msg.innerHTML = "Invalid Username";
-=======
 	    msg.innerHTML = "Invalid Username";
 	    return;
         }
@@ -205,7 +170,6 @@ BOTTOM;
         if (!isNaN(parseInt(username.charAt(0)))) {
 	    msg.innerHTML = "Invalid Username";
 	    return;
->>>>>>> Stashed changes
         }
         msg.innerHTML = "Valid Username";
     }
@@ -213,19 +177,12 @@ BOTTOM;
         var msg = document.getElementById("password_text");
         var password = document.getElementById("password").value;
         if ((password.length < 6) || (password.length > 10)) {
-<<<<<<< Updated upstream
-            msg.innerHTML = "Invalid Password";
-        }
-        if (!password.match(/^[0-9a-zA-Z]+$/)) {
-            msg.innerHTML = "Invalid Password";
-=======
 	    msg.innerHTML = "Invalid Password";
 	    return;
         }
         if (!password.match(/^[0-9a-zA-Z]+$/)) {
 	    msg.innerHTML = "Invalid Password";
 	    return;
->>>>>>> Stashed changes
         }
         var i = 0;
         var hasNum = false;
@@ -245,12 +202,8 @@ BOTTOM;
             i++;
         }
         if (!hasNum || !hasLower || !hasUpper) {
-<<<<<<< Updated upstream
-            msg.innerHTML = "Invalid Password";
-=======
 	    msg.innerHTML = "Invalid Password";
 	    return;
->>>>>>> Stashed changes
         } 
         msg.innerHTML = "Valid Password"; 
     }
