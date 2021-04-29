@@ -1,4 +1,5 @@
 DROP TABLE if exists Plants;
+DROP TABLE if exists Users;
 
 CREATE TABLE Plants (
 id          INT,
@@ -6,6 +7,12 @@ plantName   TEXT,
 img         TEXT,
 plantInfo   TEXT,
 PRIMARY KEY (id)
+);
+
+CREATE TABLE Users (
+userName    VARBINARY(10),
+pswd        VARBINARY(10),
+PRIMARY KEY (userName)
 );
 
 INSERT INTO Plants VALUES
