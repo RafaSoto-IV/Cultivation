@@ -1,5 +1,7 @@
 var found_plant = document.getElementsByClassName('plant');
 var watering = new Audio("watering_can_audio.mp3");
+var v;
+var countdown;
 watering.volume = 0.05;
 //var timer = setInterval(check, 3000)
 
@@ -98,14 +100,82 @@ function check(left, top){
   if(t[0] > top && t[0] < (top + 250)){
     if (l[0] > left && l[0] < (left + 250)) {
       //console.log(found_plant.id);
-      water()
+      var x = getCookie('plantWatered');
+	     console.log("inside field", x);
+	      if (x) {
+		        console.log(x);
+    		      alert('wait some time before watering again! You have ' + countdown + " left");
+	           } else {
+		             console.log("cookie not found");
+      		         water();
+	     }
     }
   }
 
+  v = setTimeout(function(){   var img = document.getElementById('water');
+img.style.transform = 'rotate(0deg)';
+}, 1000);
+
+}
+
+if( getCookie('plantwatered') === null ) {
+    console.log("i am thirsty");
 }
 
 function water(){
   // console.log(parsnip.plant_name);
+  setCookie("plantWatered", "parsnip", 7);
+  startTimer(7);
+  clearTimeout(v);
+  rotate();
+
   watering.play();
   parsnip.frameup();
+}
+
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+function eraseCookie(name) {
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+function startTimer(duration) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        countdown = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+function rotate(){
+  var img = document.getElementById('water');
+  img.style.transform = 'rotate(300deg)';
+
 }
