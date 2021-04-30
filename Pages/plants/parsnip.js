@@ -1,5 +1,8 @@
 var found_plant = document.getElementsByClassName('plant');
-var timer = setInterval(check, 3000)
+var watering = new Audio("watering_can_audio.mp3");
+watering.volume = 0.05;
+//var timer = setInterval(check, 3000)
+
 $(function() {
   reveal = function($frame){
     $("#information" + $frame).fadeIn('fast');
@@ -12,6 +15,7 @@ class Plant{
     this.frame = 0;
     this.cap = cap;
     this.exists = true;
+    this.thirsty = false;
     this.level = "../../Photos/" + this.plant_name + "/tile" + this.frame + ".png";
     document.getElementById(this.plant_name).src = this.level;
   }
@@ -20,7 +24,7 @@ class Plant{
     if (this.frame > this.cap){
       this.frame = this.cap;
       // document.getElementById(this.plant_name + 'done').innerHTML = 'DONE!';
-      clearInterval(timer);
+      //clearInterval(timer);
     }else{
       reveal(this.frame);
     }
@@ -88,9 +92,11 @@ function check(left, top){
   t = String(top).split("px")
 
   console.log(l[0], t[0])
-
-  if(t[0] > 400 && t[0] < 650){
-    if (l[0] > 650 && l[0] < 900) {
+  console.log("offsetLeft: " + document.getElementById("parsnip").offsetLeft, "offsetTop: " + document.getElementById("parsnip").offsetTop);
+  var left = document.getElementById("parsnip").offsetLeft;
+  var top = document.getElementById("parsnip").offsetTop;
+  if(t[0] > top && t[0] < (top + 250)){
+    if (l[0] > left && l[0] < (left + 250)) {
       //console.log(found_plant.id);
       water()
     }
@@ -100,5 +106,6 @@ function check(left, top){
 
 function water(){
   // console.log(parsnip.plant_name);
+  watering.play();
   parsnip.frameup();
 }

@@ -1,5 +1,7 @@
 var found_plant = document.getElementsByClassName('plant');
-var timer = setInterval(check, 3000)
+var watering = new Audio("watering_can_audio.mp3");
+watering.volume = 0.05;
+//var timer = setInterval(check, 3000)
 $(function() {
   reveal = function($frame){
     $("#information" + $frame).fadeIn('fast');
@@ -20,7 +22,7 @@ class Plant{
     if (this.frame > this.cap){
       this.frame = this.cap;
       // document.getElementById(this.plant_name + 'done').innerHTML = 'DONE!';
-      clearInterval(timer);
+      //clearInterval(timer);
     }else{
       reveal(this.frame);
     }
@@ -100,5 +102,6 @@ function check(left, top){
 
 function water(){
   // console.log(tulip.plant_name);
+  watering.play();
   tulip.frameup();
 }

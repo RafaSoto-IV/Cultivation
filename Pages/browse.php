@@ -63,8 +63,8 @@
 
         while ($row = mysqli_fetch_row($result)) {
             echo "<div class=\"plantCard\">";
-            echo "<a href=\"plants.html\"><img class=\"plantPic\" src=\"$row[2]\" alt=\"plant picture\"></a>";
-            echo "<a href=\"plants.html\"><h4>$row[1]</h4></a>";
+            echo "<a href=\"my_plants.html\"><img class=\"plantPic\" src=\"$row[2]\" alt=\"plant picture\"></a>";
+            echo "<a href=\"my_plants.html\"><h4>$row[1]</h4></a>";
             echo "<p>$row[3]</p>";
             echo "</div>";
         }

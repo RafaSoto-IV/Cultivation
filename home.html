@@ -13,8 +13,8 @@
       </div>
       <div style="width:25%; float:right; text-align:right;">
         <img class="profile" src="Photos/profile.png" alt="profile">
-        <br><br><br><a href="Pages/login.php"><h3>Login</h3></a>
-        <a href="Pages/register.php"><h3>Register</h3></a>
+        <br><br><br><a href="Pages/login.php?init_state=login"><h3>Login</h3></a>
+        <a href="Pages/login.php?init_state=register"><h3>Register</h3></a>
       </div>
     </header>
     <div id="container">
@@ -52,5 +52,17 @@
       Copyright © 2021 The Roots - Austin,Tx
       </div>
     </div>
+    <script>
+        window.onscroll = function() {myFunction()};
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+        function myFunction(){
+            if(window.pageYOffset >= sticky){
+                navbar.classList.add("sticky")
+            } else{
+                navbar.classList.remove("sticky");
+            }
+        }
+    </script>
   </body>
 </html>
