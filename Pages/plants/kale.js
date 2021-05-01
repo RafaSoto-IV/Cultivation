@@ -1,7 +1,17 @@
 var found_plant = document.getElementsByClassName('plant');
-var timer = setInterval(check, 3000)
+var v;
+var countdown;
+var watering = new Audio("watering_can_audio.mp3");
+watering.volume = 0.05;
+var final_level = new Audio("save-01.wav");
+final_level.volume = 0.05;
+var timer = setInterval(thirst_meter, 1000)
+
 $(function() {
   reveal = function($frame){
+    if($frame==4){
+        final_level.play();
+    }
     $("#information" + $frame).fadeIn('fast');
   }
 })
@@ -12,6 +22,7 @@ class Plant{
     this.frame = 0;
     this.cap = cap;
     this.exists = true;
+    this.thirsty = false;
     this.level = "../../Photos/" + this.plant_name + "/tile" + this.frame + ".png";
     document.getElementById(this.plant_name).src = this.level;
   }
@@ -87,18 +98,101 @@ function check(left, top){
   l = String(left).split("px")
   t = String(top).split("px")
 
-  //console.log(l[0], t[0])
-
-  if(t[0] > 400 && t[0] < 650){
-    if (l[0] > 650 && l[0] < 900) {
+  console.log(l[0], t[0])
+  console.log("offsetLeft: " + document.getElementById("kale").offsetLeft, "offsetTop: " + document.getElementById("kale").offsetTop);
+  var left = document.getElementById("kale").offsetLeft;
+  var top = document.getElementById("kale").offsetTop;
+  if(t[0] > top && t[0] < (top + 250)){
+    if (l[0] > left && l[0] < (left + 250)) {
       //console.log(found_plant.id);
-      water()
-    }
+      var x = getCookie('plantWatered');
+	console.log("inside field", x);
+	if (x) {
+		console.log(x);
+    		//alert('wait some time before watering again! You have ' + countdown + " left");
+	} else {
+		console.log("cookie not found");
+      		water();
+	}    }
   }
+
+  v = setTimeout(function(){   var img = document.getElementById('water');
+  img.style.transform = 'rotate(0deg)';
+  }, 1000);
 
 }
 
 function water(){
   // console.log(kale.plant_name);
+
+  setCookie("plantWatered", "kale", 7);
+  startTimer(7);
+  clearTimeout(v);
+  rotate();
+
+  watering.play();
   kale.frameup();
 }
+
+function thirst_meter(){
+    var x = getCookie('plantWatered');
+    if(kale.frame < 4){
+        if (x) {
+	    console.log(x);
+    	    document.getElementById("thirst").innerHTML = "I'm quenched! Please come back later!"
+	    + "<br />" + "(" + countdown + ")" + "<br />";
+        } else {
+	    document.getElementById("thirst").innerHTML = "I'm thirsty!" + "<br />";
+        }
+    } else{
+        document.getElementById("thirst").innerHTML = "I'm all grown up! Thanks for your help!" + "<br />";
+    }
+}
+
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+function eraseCookie(name) {
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+function startTimer(duration) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        countdown = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+function rotate(){
+  var img = document.getElementById('water');
+  img.style.transform = 'rotate(300deg)';
+
+}
+
