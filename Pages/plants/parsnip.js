@@ -1,12 +1,17 @@
 var found_plant = document.getElementsByClassName('plant');
-var watering = new Audio("watering_can_audio.mp3");
 var v;
 var countdown;
+var watering = new Audio("watering_can_audio.mp3");
 watering.volume = 0.05;
-//var timer = setInterval(check, 3000)
+var final_level = new Audio("save-01.wav");
+final_level.volume = 0.05;
+var timer = setInterval(thirst_meter, 1000)
 
 $(function() {
   reveal = function($frame){
+    if($frame==4){
+        final_level.play();
+    }
     $("#information" + $frame).fadeIn('fast');
   }
 })
@@ -26,7 +31,7 @@ class Plant{
     if (this.frame > this.cap){
       this.frame = this.cap;
       // document.getElementById(this.plant_name + 'done').innerHTML = 'DONE!';
-      //clearInterval(timer);
+      clearInterval(timer);
     }else{
       reveal(this.frame);
     }
@@ -101,29 +106,25 @@ function check(left, top){
     if (l[0] > left && l[0] < (left + 250)) {
       //console.log(found_plant.id);
       var x = getCookie('plantWatered');
-	     console.log("inside field", x);
-	      if (x) {
-		        console.log(x);
-    		      alert('wait some time before watering again! You have ' + countdown + " left");
-	           } else {
-		             console.log("cookie not found");
-      		         water();
-	     }
-    }
+	console.log("inside field", x);
+	if (x) {
+		console.log(x);
+    		//alert('wait some time before watering again! You have ' + countdown + " left");
+	} else {
+		console.log("cookie not found");
+      		water();
+	}    }
   }
 
   v = setTimeout(function(){   var img = document.getElementById('water');
-img.style.transform = 'rotate(0deg)';
-}, 1000);
+  img.style.transform = 'rotate(0deg)';
+  }, 1000);
 
-}
-
-if( getCookie('plantwatered') === null ) {
-    console.log("i am thirsty");
 }
 
 function water(){
   // console.log(parsnip.plant_name);
+
   setCookie("plantWatered", "parsnip", 7);
   startTimer(7);
   clearTimeout(v);
@@ -131,6 +132,21 @@ function water(){
 
   watering.play();
   parsnip.frameup();
+}
+
+function thirst_meter(){
+    var x = getCookie('plantWatered');
+    if(parsnip.frame < 4){
+        if (x) {
+	    console.log(x);
+    	    document.getElementById("thirst").innerHTML = "I'm quenched! Please come back later!"
+	    + "<br />" + "(" + countdown + ")" + "<br />";
+        } else {
+	    document.getElementById("thirst").innerHTML = "I'm thirsty!" + "<br />";
+        }
+    } else{
+        document.getElementById("thirst").innerHTML = "I'm all grown up! Thanks for your help!" + "<br />";
+    }
 }
 
 function setCookie(name,value,days) {
@@ -179,3 +195,4 @@ function rotate(){
   img.style.transform = 'rotate(300deg)';
 
 }
+

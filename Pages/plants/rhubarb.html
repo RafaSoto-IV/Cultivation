@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <script src="jquery-3.6.0.js"></script>
-    <script type="text/javascript" src="rhubarb.js"></script>
+    <script type="text/javascript" src="rhubarb.js" defer></script>
     <!-- <script type="text/javascript" src="plant_class.js"></script> -->
     <!--<script type="text/javascript" src="simulation.js"></script>-->
     <link rel="stylesheet" href="../../cultivation.css">
@@ -37,12 +37,15 @@
 
       </div>
       <div id="content">
+	<br />
         <h2>&nbsp;&nbsp;<u>Rhubarb</u></h2>
         <p>
-          Drag the watering can over a plant and click on it to water it!
+          Drag the watering can over the plant and click on it to water it!
         </p>
-        <div>
-          <img class = "plant" id = "rhubarb" src = "../../Photos/rhubarb/tile0.png" alt = "" width = "250" height = "250"/>
+	<div id="thirst" style="color:#9ACD32; font-family: Monaco; font-size:160%;">
+	</div>
+        <div style="margin-left: 650px; margin-right: 1000px; margin-top: 25px; margin-bottom: 25px; padding-top: 25px;">
+          <img class = "plant" id = "rhubarb" src = "../../Photos/rhubarb/tile0.png" alt = "" width = "250px" height = "250px"/>
           <p id = 'plant1done'> </p>
         </div>
         <div id="water" onmousedown="grabber(event); return false" style=" position: absolute; top: 500px; left: 900px; ">
@@ -50,7 +53,8 @@
         </div>
         <div id="information1" style="display:none;">
           <p>
-            - Dig large, bushel basket-size holes.
+<b>Planting</b>
+<br />- Dig large, bushel basket-size holes.
 <br />- Space rhubarb plants about 4 feet apart and plant the roots 1 to 3 inches below the surface of the soil, with buds facing up.
 <br />- Water well at the time of planting.
 
@@ -58,40 +62,40 @@
           </div>
         <div id="information2" style="display:none;">
           <p>
-            - Mulch generously with a heavy layer of straw to retain moisture and discourage weeds.
+<b>Care</b>
+<br />- Mulch generously with a heavy layer of straw to retain moisture and discourage weeds.
 <br />- Water your plant well and consistently. Rhubarb needs sufficient moisture, especially during the hot, dry days of summer.
 <br />- Remove seed stalks as soon as they appear, as they will only sap energy from the plant that could otherwise be used for producing stalks or roots.
 <br />- Each spring, apply a light sprinkling of a fertilizer (10-10-10) when the ground is thawing or has just thawed. See your local frost dates.
 <br />- Overcrowding is common problem with rhubarb and can lead to subpar growth. Dig and split rhubarb roots every 3 to 4 years. Divide when plants are dormant in early spring (or late fall). Divisions should have at least one large bud on them.
-<br />- In the fall, remove all plant debris. Once your ground freezes, it’s best to cover rhubarb with 2 to 4 inches of an organic mulch, preferably well-rotted compost. By adding nitrogen to the soil, you’re preparing the rhubarb plants for a good spring season.
+<br />- In the fall, remove all plant debris. Once your ground freezes, it's best to cover rhubarb with 2 to 4 inches of an organic mulch, preferably well-rotted compost. By adding nitrogen to the soil, you're preparing the rhubarb plants for a good spring season.
 
             </p>
           </div>
         <div id="information3" style="display:none;">
           <p>
-            - Do not harvest any stalks during the first growing season, and harvest sparingly in the second year. This allows your plants to become properly established.
+<b>Harvest/Storage</b>
+<br />- Do not harvest any stalks during the first growing season, and harvest sparingly in the second year. This allows your plants to become properly established.
 <br />- Usually after 3 years, the harvest period runs 8 to 10 weeks long, lasting through mid-summer.
-<br />- Harvest stalks when they are 12 to 18 inches long. If the stalks become thin, stop harvesting; this means the plant’s food reserves are low.
-<br />- Grab the base of the stalk and pull it away from the plant with a gentle twist. If this doesn’t work, you can cut the stalk at the base. To prevent the spread of disease, be sure to sanitize the knife before cutting. Discard the leaves.
+<br />- Harvest stalks when they are 12 to 18 inches long. If the stalks become thin, stop harvesting; this means the plant's food reserves are low.
+<br />- Grab the base of the stalk and pull it away from the plant with a gentle twist. If this doesn't work, you can cut the stalk at the base. To prevent the spread of disease, be sure to sanitize the knife before cutting. Discard the leaves.
 <br />- Always leave at least 2 stalks per plant to ensure continued production. You may have a bountiful harvest for up to 20 years without having to replace your rhubarb plants.
-<br />- It was once believed that the entire rhubarb plant becomes toxic as temperatures warm in the summer. This isn’t true, though summer-harvested stalks usually have a tougher texture than those picked in the spring. Nevertheless, after mid-summer, it’s best to leave stalks on the plant to allow them to gather energy for next year’s growth.
+<br />- It was once believed that the entire rhubarb plant becomes toxic as temperatures warm in the summer. This isn't true, though summer-harvested stalks usually have a tougher texture than those picked in the spring. Nevertheless, after mid-summer, it's best to leave stalks on the plant to allow them to gather energy for next year's growth.
 
             </p>
           </div>
         <div id="information4" style="display:none;">
           <p>
-            Recommended Varieties:
-<br />- ‘Canada Red’
-<br />- ‘Cherry Red’
-<br />- ‘Crimson Red’
-<br />- ‘MacDonald’
-<br />- ‘Valentine’
-<br />- ‘Victoria’
+<b>Recommended Varieties</b>:
+<br />- 'Canada Red'
+<br />- 'Cherry Red'
+<br />- 'Crimson Red'
+<br />- 'MacDonald'
+<br />- 'Valentine'
+<br />- 'Victoria'
 <br />
-<br /><iframe width = "420" height = "345" src="https://www.youtube.com/watch?v=tJ313fR1BRI">
-</iframe>
-
-            </p>
+<br /><iframe width="560" height="315" src="https://www.youtube.com/embed/tJ313fR1BRI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
           </div>
       </div>
       <div id="footer">
