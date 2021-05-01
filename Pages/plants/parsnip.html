@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <script src="jquery-3.6.0.js"></script>
-    <script type="text/javascript" src="parsnip.js"></script>
+    <script type="text/javascript" src="parsnip.js" defer></script>
     <!-- <script type="text/javascript" src="plant_class.js"></script> -->
     <!--<script type="text/javascript" src="simulation.js"></script>-->
     <link rel="stylesheet" href="../../cultivation.css">
@@ -37,15 +37,15 @@
 
       </div>
       <div id="content">
-        <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <u>My Plants</u></h2>
+	<br />
+        <h2>&nbsp;&nbsp;<u>Parsnip</u></h2>
         <p>
-          Drag the watering can over a plant and click on it to water it!
+          Drag the watering can over the plant and click on it to water it!
         </p>
-        <div>
-          <img class = "plant" id = "parsnip" src = "../../Photos/parsnip/tile0.png" alt = "" width = "250" height = "250"/>
+	<div id="thirst" style="color:#9ACD32; font-family: Monaco; font-size:160%;">
+	</div>
+        <div style="margin-left: 650px; margin-right: 1000px; margin-top: 25px; margin-bottom: 25px; padding-top: 25px;">
+          <img class = "plant" id = "parsnip" src = "../../Photos/parsnip/tile0.png" alt = "" width = "250px" height = "250px"/>
           <p id = 'plant1done'> </p>
         </div>
         <div id="water" onmousedown="grabber(event); return false" style=" position: absolute; top: 500px; left: 900px; ">
@@ -53,17 +53,19 @@
         </div>
         <div id="information1" style="display:none;">
           <p>
-            - Always sow fresh seed.
+<b>Planting</b>
+<br />- Always sow fresh seed.
 <br />- Parsnips need a long growing season, so sow as soon as the soil is workable.
 <br />- Loosen the soil to a depth of 12-15 inches and mix in a 2- to 4-inch layer of compost.
-<br />- Sow 2 seeds per inch ½ an inch deep
+<br />- Sow 2 seeds per inch Â½ an inch deep
 <br />- Seedlings will emerge in 2-3 weeks
 
             </p>
           </div>
         <div id="information2" style="display:none;">
           <p>
-            - Thin the seedlings to stand 3-6 inches apart.
+<b>Care</b>
+<br />- Thin the seedlings to stand 3-6 inches apart.
 <br />- Water during the summer if rainfall is less than 1 inch per week.
 <br />- Always keep the beds free of weeds.
 
@@ -71,7 +73,8 @@
           </div>
         <div id="information3" style="display:none;">
           <p>
-            - Parsnips mature in about 16 weeks.
+<b>Harvest/Storage</b>
+<br />- Parsnips mature in about 16 weeks.
 <br />- Leave your parsnips in the ground for a few frosts but harvest before the ground freezes.
 <br />- If you leave them in the ground for the winter, cover them with a thick layer of mulch and harvest immediately after the ground thaws in the spring.
 
@@ -79,16 +82,17 @@
           </div>
         <div id="information4" style="display:none;">
           <p>
-            Recommended Varieties:
-            <br />- ‘Avonresister’ (short)
-    <br />- ‘Cobham Improved Marrow’ (medium)
-    <br />- ‘Gladiator’ (long)
-
+            <b>Recommended Varieties</b>:
+            <br />- â€˜Avonresisterâ€™ (short)
+    <br />- â€˜Cobham Improved Marrowâ€™ (medium)
+    <br />- â€˜Gladiatorâ€™ (long)
+    <br />
+    <br /><iframe width="560" height="315" src="https://www.youtube.com/embed/iR2uA78C9_k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </p>
           </div>
       </div>
       <div id="footer">
-      Copyright © 2021 The Roots - Austin,Tx
+      Copyright Â© 2021 The Roots - Austin,Tx
       </div>
     </div>
   </body>
