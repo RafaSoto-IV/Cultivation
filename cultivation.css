@@ -77,17 +77,18 @@ header {
 }
 
 .plantCard {
+	display: inline-block;
     border:2px solid darkslategrey;
     background-color:mediumaquamarine;
     border-radius:5px;
     padding:25px;
     font-size:150%;
-    height:200px;
+    min-height:200px;
     margin-bottom:25px;
 }
 
 .plantPic {
-    max-height:100%;
+    height:180px;
     padding:5px;
     border-radius:10px;
     background-color:blanchedalmond;
