@@ -15,16 +15,14 @@
   
   if (isset($_POST["regLog"]))
   {
-   $username = stripslashes($_POST["username"]);
-   $username = mysql_real_escape_string($_POST["username"]);
-   $password = stripslashes($_POST["password"]);
-   $password = mysql_real_escape_string($_POST["password"]);
- 
-   $server = "cs.utexas.edu";
+   $username = $_POST["username"];
+   $password = $_POST["password"];
+   
+   $server = "spring-2021.cs.utexas.edu";
    $database = "cs329e_bulko_kmw4287";
    $db_user = "cs329e_bulko_kmw4287";
    $db_password = "Invest=soothe=slate";
-   $mysqli = new mysqli ($server, $user, $pwd, $dbName);
+   $mysqli = new mysqli ($server, $db_user, $db_password, $database);
    // If it returns a non-zero error number, print a message and stop execution immediately
  
      if ($mysqli->connect_errno) {
@@ -39,9 +37,10 @@
        echo "Registration Successful!";
        header("Location: ./login.php");
    } else {
-       echo "Registration Failed";
+       echo "<p>Registration Failed</p>";
+       register();
    }
- 
+   }
    else
   {
      #Haven't logged in yet
@@ -54,12 +53,7 @@
   {
    $script = $_SERVER['PHP_SELF'];
   print <<<TOPR
-  <html>
-  <head>
-  <title> Register Page </title>
-    <link rel="stylesheet" type="text/css" href="newspaperlayout.css">
-  </head>
-  <body>
+
   <h3> Log In or Register </h3>
   <form method = "post" action = "$script">
   <table >
@@ -137,8 +131,6 @@ TOPR;
   </tr>
   </table>
   </form>
-  </body>
-  </html>
 BOTTOMR;
   }
 ?>
