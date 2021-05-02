@@ -14,9 +14,6 @@
 
  if (isset($_POST["login"]))
  {
-  $username = $_POST["username"];
-  $password = $_POST["password"];
-
   $server = "spring-2021.cs.utexas.edu";
   $database = "cs329e_bulko_kmw4287";
   $db_user = "cs329e_bulko_kmw4287";
@@ -27,6 +24,10 @@
 	if ($mysqli->connect_errno) {
     die('Connect Error: ' . $mysqli->connect_errno . ": " . $mysqli->connect_error);
   }
+  $username = $_POST["username"];
+  $password = $_POST["password"];
+  $username = $mysqli->real_escape_string($username);
+  $password = $mysqli->real_escape_string($password);
 
   $stmt = $mysqli->prepare("SELECT pswd FROM Users WHERE userName =?");
   $stmt->bind_param("s",$username);

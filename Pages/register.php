@@ -13,21 +13,23 @@
   ini_set("display_errors", "on");
 
   
-  if (isset($_POST["regLog"]))
-  {
-   $username = $_POST["username"];
-   $password = $_POST["password"];
-   
-   $server = "spring-2021.cs.utexas.edu";
-   $database = "cs329e_bulko_kmw4287";
-   $db_user = "cs329e_bulko_kmw4287";
-   $db_password = "Invest=soothe=slate";
-   $mysqli = new mysqli ($server, $db_user, $db_password, $database);
+  if (isset($_POST["register"]))
+   {
+    $server = "spring-2021.cs.utexas.edu";
+    $database = "cs329e_bulko_kmw4287";
+    $db_user = "cs329e_bulko_kmw4287";
+    $db_password = "Invest=soothe=slate";
+    $mysqli = new mysqli ($server, $db_user, $db_password, $database);
+
+    $username = $_POST["username"];
+    $password = $_POST["password"];
    // If it returns a non-zero error number, print a message and stop execution immediately
  
      if ($mysqli->connect_errno) {
      die('Connect Error: ' . $mysqli->connect_errno . ": " . $mysqli->connect_error);
    }
+   $username = $mysqli->real_escape_string($username);
+   $password = $mysqli->real_escape_string($password);
  
    $stmt = $mysqli->prepare("INSERT INTO Users (userName, pswd)
    VALUES (?,?)");
@@ -54,7 +56,7 @@
    $script = $_SERVER['PHP_SELF'];
   print <<<TOPR
 
-  <h3> Log In or Register </h3>
+  <h3> Register </h3>
   <form method = "post" action = "$script">
   <table >
    <tr>
@@ -126,7 +128,7 @@ TOPR;
 
   print <<<BOTTOMR
   <tr>
-  <td><input type = "submit" name = "regLog" value = "register" /></td>
+  <td><input type = "submit" name = "register" value = "register" /></td>
   <td><input type = "reset" value = "Reset" /></td>
   </tr>
   </table>
