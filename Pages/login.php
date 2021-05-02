@@ -33,9 +33,10 @@
   $stmt->bind_param("s",$username);
   $stmt->execute();
   $response_set = $stmt->get_result();
+  $response = $response_set->fetch_all();
   $pass = $response[0][0];
   
-   if($response[0] === $password){
+   if($pass === $password){
     setcookie("user_name", $username, time()+1000, "/");
 	  if(isset($_COOKIE["page"])){
 		  header("Location: ".$_COOKIE["page"]);
