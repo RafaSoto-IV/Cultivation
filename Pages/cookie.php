@@ -1,5 +1,5 @@
 <?php
-	$site = $_GET['article'].'.html';
+	$site = $_GET['article'].'.php';
 	setcookie("page", $site, time()+200, "/");
 
 	if(!isset($_COOKIE["user_name"])){
