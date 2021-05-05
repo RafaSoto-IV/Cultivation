@@ -1,6 +1,6 @@
 var found_plant = document.getElementsByClassName('plant');
 var v;
-var countdown;
+var countdown ="5:00:00";
 var watering = new Audio("watering_can_audio.mp3");
 watering.volume = 0.05;
 var final_level = new Audio("save-01.wav");
@@ -105,7 +105,7 @@ function check(left, top){
   if(t[0] > top && t[0] < (top + 250)){
     if (l[0] > left && l[0] < (left + 250)) {
       //console.log(found_plant.id);
-      var x = getCookie('plantWatered');
+      var x = getCookie('tulip');
 	console.log("inside field", x);
 	if (x) {
 		console.log(x);
@@ -125,8 +125,8 @@ function check(left, top){
 function water(){
   // console.log(tulip.plant_name);
 
-  setCookie("plantWatered", "tulip", 7);
-  startTimer(7);
+  setCookie("tulip", "tulip", 5*60*60);
+  startTimer(5*60*60);
   clearTimeout(v);
   rotate();
 
@@ -135,7 +135,7 @@ function water(){
 }
 
 function thirst_meter(){
-    var x = getCookie('plantWatered');
+    var x = getCookie('tulip');
     if(tulip.frame < 4){
         if (x) {
 	    console.log(x);
