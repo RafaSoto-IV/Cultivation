@@ -1,6 +1,8 @@
 var found_plant = document.getElementsByClassName('plant');
 var v;
-var countdown;
+var countdown = "01:00";
+var clock = "01:00";
+
 var watering = new Audio("watering_can_audio.mp3");
 watering.volume = 0.05;
 var final_level = new Audio("save-01.wav");
@@ -9,6 +11,8 @@ var timer = setInterval(thirst_meter, 1000)
 
 $(function() {
   reveal = function($frame){
+  console.log('choosen '+$frame);
+
     if($frame==4){
         final_level.play();
     }
@@ -19,7 +23,12 @@ class Plant{
   constructor(plant, string, cap){
     this.plant = plant;
     this.plant_name = string;
-    this.frame = 0;
+    if(getCookie('rFrame')){
+	this.frame = getCookie('rFrame');
+	console.log('look at the frame '+ this.frame + ' look at this cookie ' + getCookie('rFrame'));
+    } else {
+    	this.frame = 0;
+    }
     this.cap = cap;
     this.exists = true;
     this.thirsty = false;
@@ -28,6 +37,7 @@ class Plant{
   }
   frameup(){
     this.frame += 1;
+    console.log('look at the frame in frameup '+ this.frame);
     if (this.frame > this.cap){
       this.frame = this.cap;
       // document.getElementById(this.plant_name + 'done').innerHTML = 'DONE!';
@@ -37,6 +47,7 @@ class Plant{
     }
     this.level = "../../Photos/" + this.plant_name + "/tile" + this.frame + ".png";
     document.getElementById(this.plant_name).src = this.level;
+
     //console.log(document.getElementById(this.plant_name));
   }
   framedown(){
@@ -105,10 +116,8 @@ function check(left, top){
   if(t[0] > top && t[0] < (top + 250)){
     if (l[0] > left && l[0] < (left + 250)) {
       //console.log(found_plant.id);
-      var x = getCookie('plantWatered');
-	console.log("inside field", x);
+      var x = getCookie('rhubarb');
 	if (x) {
-		console.log(x);
     		//alert('wait some time before watering again! You have ' + countdown + " left");
 	} else {
 		console.log("cookie not found");
@@ -125,22 +134,29 @@ function check(left, top){
 function water(){
   // console.log(rhubarb.plant_name);
 
-  setCookie("plantWatered", "rhubarb", 7);
-  startTimer(7);
+  setCookie("rhubarb", "rhubarb", 1*60);
+  startTimer(1*60);
   clearTimeout(v);
   rotate();
 
   watering.play();
   rhubarb.frameup();
+  setCookie("rFrame", rhubarb.frame, 1*60);
+  console.log('looking for the frames '+ getCookie('rFrame'));
 }
 
 function thirst_meter(){
-    var x = getCookie('plantWatered');
+    var x = getCookie('rhubarb');
     if(rhubarb.frame < 4){
         if (x) {
-	    console.log(x);
+	    console.log('frame'+ rhubarb.frame);
+
+	    clock = getCookie('timer');
+
+	    startTimer(getCookie('savedTime'));
+
     	    document.getElementById("thirst").innerHTML = "I'm quenched! Please come back later!"
-	    + "<br />" + "(" + countdown + ")" + "<br />";
+	    + "<br />" + "(" + clock + ")" + "<br />";
         } else {
 	    document.getElementById("thirst").innerHTML = "I'm thirsty!" + "<br />";
         }
@@ -183,11 +199,14 @@ function startTimer(duration) {
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
         countdown = minutes + ":" + seconds;
+	setCookie("timer", countdown, duration);	
+	setCookie("savedTime", timer, duration);
 
         if (--timer < 0) {
             timer = duration;
         }
     }, 1000);
+
 }
 
 function rotate(){
