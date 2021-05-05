@@ -1,6 +1,6 @@
 var found_plant = document.getElementsByClassName('plant');
 var v;
-var countdown;
+var countdown = "03:00:00";
 var watering = new Audio("watering_can_audio.mp3");
 watering.volume = 0.05;
 var final_level = new Audio("save-01.wav");
@@ -105,7 +105,7 @@ function check(left, top){
   if(t[0] > top && t[0] < (top + 250)){
     if (l[0] > left && l[0] < (left + 250)) {
       //console.log(found_plant.id);
-      var x = getCookie('plantWatered');
+      var x = getCookie('kale');
 	console.log("inside field", x);
 	if (x) {
 		console.log(x);
@@ -125,8 +125,8 @@ function check(left, top){
 function water(){
   // console.log(kale.plant_name);
 
-  setCookie("plantWatered", "kale", 7);
-  startTimer(7);
+  setCookie("kale", "kale", 3*60*60);
+  startTimer(3*60*60);
   clearTimeout(v);
   rotate();
 
@@ -135,7 +135,7 @@ function water(){
 }
 
 function thirst_meter(){
-    var x = getCookie('plantWatered');
+    var x = getCookie('kale');
     if(kale.frame < 4){
         if (x) {
 	    console.log(x);
@@ -176,13 +176,14 @@ function eraseCookie(name) {
 function startTimer(duration) {
     var timer = duration, minutes, seconds;
     setInterval(function () {
+	hours = parseInt(time/60, 10);
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
 
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
-        countdown = minutes + ":" + seconds;
+        countdown = hours + ":" + minutes + ":" + seconds;
 
         if (--timer < 0) {
             timer = duration;
