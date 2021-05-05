@@ -8,7 +8,7 @@
   <body>
     <header>
       <div style="width:70%; float:left;">
-      <a href="home.html"><img class="logo" src="Photos/logo.png" alt="logo"></a>
+      <a href="home.php"><img class="logo" src="Photos/logo.png" alt="logo"></a>
       <br><h1 style="font-size:75px">Shrubs</h1>
       </div>
       <div style="width:25%; float:right; text-align:right;">
@@ -27,13 +27,13 @@
     <div id="container">
       <div id="navbar">
         <h1>
-          <a href="home.html">Home</a>
+          <a href="home.php">Home</a>
           <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
           <a href="Pages/browse.php">Browse</a>
           <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
           <a href="Pages/cookie.php?article=my_plants">My Plants</a>
           <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-          <a href="Pages/about_us.html">About Us</a>
+          <a href="Pages/about_us.php">About Us</a>
         </h1>
       </div>
 

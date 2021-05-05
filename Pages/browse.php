@@ -42,25 +42,32 @@
   </script>
 <header>
   <div style="width:70%; float:left;">
-  <a href="../home.html"><img class="logo" src="../Photos/logo.png" alt="logo"></a>
+  <a href="../home.php"><img class="logo" src="../Photos/logo.png" alt="logo"></a>
   <br><h1 style="font-size:75px">Shrubs</h1>
   </div>
   <div style="width:25%; float:right; text-align:right;">
   <img class="profile" src="../Photos/profile.png" alt="profile">
-  <br><br><br><a href="login.php"><h3>Login</h3></a>
-  <a href="register.php"><h3>Register</h3></a>
+  <br><br><br>
+  <?php
+  if (isset($_COOKIE["user_name"])){
+    echo '<a href="logout.php"><h3>Logout</h3></a>';
+  } else {
+    echo '<a href="login.php"><h3>Login</h3></a>';
+    echo '<a href="register.php"><h3>Register</h3></a>';
+  }
+  ?>
   </div>
 </header>
 <div id="container">
 <div id="navbar">
   <h1>
-  <a href="../home.html">Home</a>
+  <a href="../home.php">Home</a>
   <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
   <a href="browse.php">Browse</a>
   <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-  <a href="my_plants.html">My Plants</a>
+  <a href="my_plants.php">My Plants</a>
   <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-  <a href="about_us.html">About Us</a>
+  <a href="about_us.php">About Us</a>
   </h1>
 </div>
 

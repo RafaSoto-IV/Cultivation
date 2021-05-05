@@ -137,7 +137,7 @@ BOTTOMR;
   }
 ?>
 
-<a href="../home.html">Head Back To The Home Page</a>
+<a href="../home.php">Head Back To The Home Page</a>
 
 	
 </body>

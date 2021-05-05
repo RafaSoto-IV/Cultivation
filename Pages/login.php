@@ -41,7 +41,7 @@
 	  if(isset($_COOKIE["page"])){
 		  header("Location: ".$_COOKIE["page"]);
 	  }else{
-		  header("Location: ../home.html");
+		  header("Location: ../home.php");
 	  }
     }else{
 	    echo "<p>wrong username or password. try again.<p>";
@@ -90,6 +90,6 @@ BOTTOM;
 
 ?>
 
-<a href="../home.html">Head Back To The Home Page</a>
+<a href="../home.php">Head Back To The Home Page</a>
 </body>
 </html>
