@@ -13,8 +13,15 @@
       </div>
       <div style="width:25%; float:right; text-align:right;">
         <img class="profile" src="Photos/profile.png" alt="profile">
-        <br><br><br><a href="Pages/login.php"><h3>Login</h3></a>
-        <a href="Pages/register.php"><h3>Register</h3></a>
+        <br><br><br>
+        <?php
+        if (isset($_COOKIE["user_name"])){
+          echo '<a href="Pages/logout.php"><h3>Logout</h3></a>';
+        } else {
+          echo '<a href="Pages/login.php"><h3>Login</h3></a>';
+          echo '<a href="Pages/register.php"><h3>Register</h3></a>';
+        }
+        ?>
       </div>
     </header>
     <div id="container">
