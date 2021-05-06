@@ -1,6 +1,10 @@
 var found_plant = document.getElementsByClassName('plant');
 var v;
+
+var clock = "40:00";
+var count = 0;
 var countdown = "40:00";
+
 var watering = new Audio("watering_can_audio.mp3");
 watering.volume = 0.05;
 var final_level = new Audio("save-01.wav");
@@ -19,7 +23,12 @@ class Plant{
   constructor(plant, string, cap){
     this.plant = plant;
     this.plant_name = string;
-    this.frame = 0;
+    if(getCookie('cFrame')){
+	this.frame = getCookie('cFrame');
+	console.log('look at the frame '+ this.frame + ' look at this cookie ' + getCookie('cFrame'));
+    } else {
+    	this.frame = 0;
+    }
     this.cap = cap;
     this.exists = true;
     this.thirsty = false;
@@ -27,7 +36,8 @@ class Plant{
     document.getElementById(this.plant_name).src = this.level;
   }
   frameup(){
-    this.frame += 1;
+    count++;
+    this.frame++;
     if (this.frame > this.cap){
       this.frame = this.cap;
       // document.getElementById(this.plant_name + 'done').innerHTML = 'DONE!';
@@ -132,13 +142,19 @@ function water(){
 
   watering.play();
   corn.frameup();
+  setCookie("cFrame", count, 1*60);
+
 }
 
 function thirst_meter(){
-    var x = getCookie('plantWatered');
+    var x = getCookie('corn');
     if(corn.frame < 4){
         if (x) {
 	    console.log(x);
+	    clock = getCookie('timer');
+
+	    startTimer(getCookie('savedTime'));
+
     	    document.getElementById("thirst").innerHTML = "I'm quenched! Please come back later!"
 	    + "<br />" + "(" + countdown + ")" + "<br />";
         } else {
@@ -183,6 +199,9 @@ function startTimer(duration) {
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
         countdown = minutes + ":" + seconds;
+	setCookie("timer", countdown, duration);	
+	setCookie("savedTime", timer, duration);
+
 
         if (--timer < 0) {
             timer = duration;
