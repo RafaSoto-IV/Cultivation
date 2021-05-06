@@ -151,9 +151,9 @@ function thirst_meter(){
     if(corn.frame < 4){
         if (x) {
 	    console.log(x);
-	    clock = getCookie('timer');
+	    clock = getCookie('timerC');
 
-	    startTimer(getCookie('savedTime'));
+	    startTimer(getCookie('savedTimeC'));
 
     	    document.getElementById("thirst").innerHTML = "I'm quenched! Please come back later!"
 	    + "<br />" + "(" + countdown + ")" + "<br />";
@@ -199,8 +199,8 @@ function startTimer(duration) {
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
         countdown = minutes + ":" + seconds;
-	setCookie("timer", countdown, duration);	
-	setCookie("savedTime", timer, duration);
+	setCookie("timerC", countdown, duration);	
+	setCookie("savedTimeC", timer, duration);
 
 
         if (--timer < 0) {
