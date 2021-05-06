@@ -1,6 +1,9 @@
 var found_plant = document.getElementsByClassName('plant');
 var v;
-var countdown;
+var countdown = "00:07";
+var clock = "00:07";
+var count = 0;
+
 var watering = new Audio("watering_can_audio.mp3");
 watering.volume = 0.05;
 var final_level = new Audio("save-01.wav");
@@ -19,7 +22,12 @@ class Plant{
   constructor(plant, string, cap){
     this.plant = plant;
     this.plant_name = string;
-    this.frame = 0;
+    if(getCookie('pFrame')){
+	this.frame = getCookie('pFrame');
+    } else {
+    	this.frame = 0;
+    }
+
     this.cap = cap;
     this.exists = true;
     this.thirsty = false;
@@ -27,7 +35,8 @@ class Plant{
     document.getElementById(this.plant_name).src = this.level;
   }
   frameup(){
-    this.frame += 1;
+    count++;
+    this.frame++;
     if (this.frame > this.cap){
       this.frame = this.cap;
       // document.getElementById(this.plant_name + 'done').innerHTML = 'DONE!';
@@ -132,6 +141,7 @@ function water(){
 
   watering.play();
   parsnip.frameup();
+  setCookie("pFrame", count, 1*24*60*60);
 }
 
 function thirst_meter(){
@@ -139,6 +149,11 @@ function thirst_meter(){
     if(parsnip.frame < 4){
         if (x) {
 	    console.log(x);
+
+	    clock = getCookie('timer');
+
+	    startTimer(getCookie('savedTime'));
+
     	    document.getElementById("thirst").innerHTML = "I'm quenched! Please come back later!"
 	    + "<br />" + "(" + countdown + ")" + "<br />";
         } else {
@@ -183,6 +198,9 @@ function startTimer(duration) {
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
         countdown = minutes + ":" + seconds;
+	setCookie("timer", countdown, duration);	
+	setCookie("savedTime", timer, duration);
+
 
         if (--timer < 0) {
             timer = duration;
