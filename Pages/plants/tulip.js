@@ -1,6 +1,10 @@
 var found_plant = document.getElementsByClassName('plant');
 var v;
-var countdown ="5:00:00";
+
+var countdown ="120:00";
+var clock = "120:00";
+var count = 0;
+
 var watering = new Audio("watering_can_audio.mp3");
 watering.volume = 0.05;
 var final_level = new Audio("save-01.wav");
@@ -19,7 +23,12 @@ class Plant{
   constructor(plant, string, cap){
     this.plant = plant;
     this.plant_name = string;
-    this.frame = 0;
+    if(getCookie('tpFrame')){
+	this.frame = getCookie('tpFrame');
+    } else {
+    	this.frame = 0;
+    }
+
     this.cap = cap;
     this.exists = true;
     this.thirsty = false;
@@ -27,7 +36,8 @@ class Plant{
     document.getElementById(this.plant_name).src = this.level;
   }
   frameup(){
-    this.frame += 1;
+    count++;
+    this.frame++;
     if (this.frame > this.cap){
       this.frame = this.cap;
       // document.getElementById(this.plant_name + 'done').innerHTML = 'DONE!';
@@ -132,6 +142,7 @@ function water(){
 
   watering.play();
   tulip.frameup();
+  setCookie("tpFrame", count, 1*24*60*60);
 }
 
 function thirst_meter(){
@@ -139,8 +150,12 @@ function thirst_meter(){
     if(tulip.frame < 4){
         if (x) {
 	    console.log(x);
+	    clock = getCookie('timer');
+
+	    startTimer(getCookie('savedTime'));
+
     	    document.getElementById("thirst").innerHTML = "I'm quenched! Please come back later!"
-	    + "<br />" + "(" + countdown + ")" + "<br />";
+	    + "<br />" + "(" + clock + ")" + "<br />";
         } else {
 	    document.getElementById("thirst").innerHTML = "I'm thirsty!" + "<br />";
         }
@@ -183,6 +198,9 @@ function startTimer(duration) {
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
         countdown = minutes + ":" + seconds;
+	setCookie("timer", countdown, duration);	
+	setCookie("savedTime", timer, duration);
+
 
         if (--timer < 0) {
             timer = duration;
