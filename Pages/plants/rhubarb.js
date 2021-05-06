@@ -1,7 +1,9 @@
 var found_plant = document.getElementsByClassName('plant');
 var v;
-var countdown = "01:00";
+
+var countdown = "1:00";
 var clock = "01:00";
+var count = 0;
 
 var watering = new Audio("watering_can_audio.mp3");
 watering.volume = 0.05;
@@ -36,7 +38,8 @@ class Plant{
     document.getElementById(this.plant_name).src = this.level;
   }
   frameup(){
-    this.frame += 1;
+    count++;
+    this.frame++;
     console.log('look at the frame in frameup '+ this.frame);
     if (this.frame > this.cap){
       this.frame = this.cap;
@@ -141,8 +144,7 @@ function water(){
 
   watering.play();
   rhubarb.frameup();
-  setCookie("rFrame", rhubarb.frame, 1*60);
-  console.log('looking for the frames '+ getCookie('rFrame'));
+  setCookie("rFrame", count, 1*24*60*60);
 }
 
 function thirst_meter(){
