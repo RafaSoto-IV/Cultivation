@@ -12,7 +12,7 @@
   <body onload="cultivate(corn);">
     <header>
       <div style="width:70%; float:left;">
-      <a href="../../home.php"><img class="logo" src="../../Photos/logo.png" alt="logo"></a>
+      <a href="../home.php"><img class="logo" src="../../Photos/logo.png" alt="logo"></a>
       <br><h1 style="font-size:75px">Shrubs</h1>
       </div>
       <div style="width:25%; float:right; text-align:right;">
@@ -52,13 +52,13 @@
 	<div id="thirst" style="color:#9ACD32; font-family: Monaco; font-size:160%;">
 	</div>
         <div style="margin-left: 650px; margin-right: 1000px; margin-top: 25px; margin-bottom: 25px; padding-top: 25px;">
-          <img class = "plant" id = "rhubarb" src = "../../Photos/corn/tile0.png" alt = "" width = "250px" height = "250px"/>
+          <img class = "plant" id = "corn" src = "../../Photos/corn/tile0.png" alt = "" width = "250px" height = "250px"/>
           <p id = 'plant1done'> </p>
         </div>
         <div id="water" onmousedown="grabber(event); return false" style=" position: absolute; top: 500px; left: 900px; ">
           <img src="../../Photos/wateringcan.png">
         </div>
-<div id="information1" style="display:none;">
+        <div id="information1" style="display:none;">
           <p>
 <b>Planting</b>
 <br />- Sow seeds about 1 inch deep and 4 to 6 inches apart in each row.
@@ -95,10 +95,8 @@
     <br /><iframe width="560" height="315" src="<iframe width="738" height="406" src="https://www.youtube.com/embed/Ts--iMD4YcA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </p>
           </div>
-      </div>
-
-      <div id="footer">
-      Copyright © 2021 The Roots - Austin,Tx
+      </div>      <div id="footer">
+      Copyright Â© 2021 The Roots - Austin,Tx
       </div>
     </div>
   </body>
