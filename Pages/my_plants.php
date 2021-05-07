@@ -2,10 +2,20 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../cultivation.css">
     <title>My Plants | Shrubs</title>
   </head>
   <body>
+  <script language="javascript" type="text/javascript">
+    function ajaxRemove(pID){
+      ajaxRequest = new XMLHttpRequest();
+      ajaxRequest.open("GET", "remove.php?plantID=" + pID, true);
+      ajaxRequest.send(null);
+      alert("Removed from My Plants!");
+      location.reload();
+    }
+  </script>
     <header>
       <div style="width:70%; float:left;">
       <a href="../home.php"><img class="logo" src="../Photos/logo.png" alt="logo"></a>
@@ -41,45 +51,45 @@
 
       <div class="cardContainer">
         <h1>My Plants</h1>
-        <div class="plantCard">
-          <a href="plants/parsnip.php"><img class="plantPic" src="../Photos/Plants/parsnip.png" alt="plant picture"></a>
-          <a href="plants/parsnip.php"><h4>Parsnip</h4></a>
-          <p>
-            Known scientifically as pastinaca sativa, parsnips are an early spring crop that
-            take approximately 16 weeks to mature. Parsnips need full or partial sunlight, and
-            are great for colder climate regions. Click the plant name or image to simulate growth!
-          </p>
-        </div>
+        <?php
+          error_reporting(E_ALL);
 
-        <div class="plantCard">
-          <a href="plants/tulip.php"><img class="plantPic" src="../Photos/Plants/tulip.png" alt="plant picture"></a>
-          <a href="plants/tulip.php"><h4>Tulip</h4></a>
-          <p>
-            Known scientifically as tulipa, tulips are an early spring crop that need to be planted in the cold. Bulbs
-            can also be refrigerated before planting in warmer areas. Tulips need full or partial sunlight, and are
-            great for colder climate regions. Click the plant name or image to simulate growth!
-          </p>
-        </div>
+          $query = "SELECT DISTINCT * FROM Plants INNER JOIN Collections ON Collections.id = Plants.id WHERE userName = '";
+          $query .= $_COOKIE["user_name"] . "'";
 
-        <div class="plantCard">
-          <a href="plants/kale.php"><img class="plantPic" src="../Photos/Plants/kale.png" alt="plant picture"></a>
-          <a href="plants/kale.php"><h4>Kale</h4></a>
-          <p>
-            Known scientifically as brassica oleracea, kale is an early spring or late summer crop that
-            take approximately 8-10 weeks to mature. Kale is very labor intensive and requires consistent watering
-            and feeding. Kale is best grown in cooler regions. Click the plant name or image to simulate growth!
-          </p>
-        </div>
+          $mysqli = new mysqli("spring-2021.cs.utexas.edu", "cs329e_bulko_kmw4287", "Invest=soothe=slate", "cs329e_bulko_kmw4287");
 
-        <div class="plantCard">
-          <a href="plants/rhubarb.php"><img class="plantPic" src="../Photos/Plants/rhubarb.png" alt="plant picture"></a>
-          <a href="plants/rhubarb.php"><h4>Rhubarb</h4></a>
-          <p>
-            Known scientifically as rheum rhabarbarum, rhubarb is a perennial crop that takes approximately 5
-            weeks to mature. Rhubarb is very pest resistant, although weeding is required to keep the plant healthy.
-            Rhubarb needs plenty of sunlight and moderate climates. Click the plant name or image to simulate growth!
-          </p>
-        </div>
+          $result = $mysqli->query($query) or die($mysqli->error);
+          $count = $result->num_rows;
+
+          if ($count > 0) {
+            $display_string = "";
+    
+            while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+                $display_string .= "<div class=\"plantCard\">";
+                $display_string .= "<a href=\"plants/" . strtolower($row['plantName']) . ".php\"><img class=\"plantPic\" src=\"$row[img]\" alt=\"plant picture\"></a>";
+                $display_string .= "<a href=\"plants/" . strtolower($row['plantName']) . ".php\"><h4>$row[plantName]</h4></a>";
+                $display_string .= "<p>$row[plantInfo]</p>";
+                $display_string .= "<button class='remove' id='remove$row[id]'>Remove from My Plants</button>";
+                $display_string .= "</div>";
+            }
+            $display_string .= "</table>";
+          } else {
+              $display_string = "No plants found. Go to our Browse page to find plants to add to your collection!";
+          }
+          
+          echo $display_string;
+          $script = <<<SCRIPT
+            <script>
+              $('.remove').click(function() {
+                var removePlant = event.target.id;
+                var removePlant = removePlant.replace('remove', '');
+                ajaxRemove(removePlant);
+              });
+            </script>
+SCRIPT;
+          echo $script;
+        ?>
       </div>
 
       <div id="footer">

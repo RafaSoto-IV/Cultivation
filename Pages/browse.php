@@ -2,19 +2,47 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../cultivation.css">
   <title>Browse | Shrubs</title>
 </head>
 <body>
   <script language="javascript" type="text/javascript">
+    function getCookie(cname) {
+      var name = cname + "=";
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
     function ajaxQuery(server,user,pwd,dbName){
       var ajaxRequest;
       ajaxRequest = new XMLHttpRequest();
       ajaxRequest.onreadystatechange = function(){
-      if(ajaxRequest.readyState == 4){
-        var ajaxDisplay = document.getElementById('ajaxDiv');
-        ajaxDisplay.innerHTML = ajaxRequest.responseText;
-      }
+        if(ajaxRequest.readyState == 4){
+          var ajaxDisplay = document.getElementById('ajaxDiv');
+          ajaxDisplay.innerHTML = ajaxRequest.responseText;
+          $('.collect').click(function() {
+            var username = getCookie("user_name");
+            if (username == "") {
+              var url = location.href;
+              window.location.href = url.replace("browse", "login");
+            } else {
+              var collectPlant = event.target.id;
+              var collectPlant = collectPlant.replace("collect", "");
+              ajaxCollect(collectPlant);
+            }
+          });
+        }
       }
       var plantName = document.getElementById('plantName').value;
       var season = document.getElementById('season').value;
@@ -30,14 +58,32 @@
       var ajaxRequest;
       ajaxRequest = new XMLHttpRequest();
       ajaxRequest.onreadystatechange = function(){
-      if(ajaxRequest.readyState == 4){
-        var ajaxDisplay = document.getElementById('ajaxDiv');
-        ajaxDisplay.innerHTML = ajaxRequest.responseText;
-      }
+        if(ajaxRequest.readyState == 4){
+          var ajaxDisplay = document.getElementById('ajaxDiv');
+          ajaxDisplay.innerHTML = ajaxRequest.responseText;
+          $('.collect').click(function() {
+            var username = getCookie("user_name");
+            if (username == "") {
+              var url = location.href;
+              window.location.href = url.replace("browse", "login");
+            } else {
+              var collectPlant = event.target.id;
+              var collectPlant = collectPlant.replace("collect", "");
+              ajaxCollect(collectPlant);
+            }
+          });
+        }
       }
       var queryString = "?server=" + server + "&user=" + user + "&pwd=" + pwd + "&dbName=" + dbName;
       ajaxRequest.open("GET", "search.php" + queryString, true);
       ajaxRequest.send(null);
+    }
+
+    function ajaxCollect(pID){
+      ajaxRequest = new XMLHttpRequest();
+      ajaxRequest.open("GET", "collect.php?plantID=" + pID, true);
+      ajaxRequest.send(null);
+      alert("Added to My Plants!");
     }
   </script>
 <header>

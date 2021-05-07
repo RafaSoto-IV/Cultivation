@@ -53,9 +53,10 @@
 
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
             $display_string .= "<div class=\"plantCard\">";
-            $display_string .= "<a href=\"plants.html\"><img class=\"plantPic\" src=\"$row[img]\" alt=\"plant picture\"></a>";
-            $display_string .= "<a href=\"plants.html\"><h4>$row[plantName]</h4></a>";
+            $display_string .= "<a href=\"plants/" . strtolower($row['plantName']) . ".php\"><img class=\"plantPic\" src=\"$row[img]\" alt=\"plant picture\"></a>";
+            $display_string .= "<a href=\"plants/" . strtolower($row['plantName']) . ".php\"><h4>$row[plantName]</h4></a>";
             $display_string .= "<p>$row[plantInfo]</p>";
+            $display_string .= "<button class='collect' id='collect$row[id]'>Add to My Plants</button>";
             $display_string .= "</div>";
         }
         $display_string .= "</table>";
