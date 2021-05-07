@@ -24,12 +24,12 @@ class Plant{
   constructor(plant, string, cap){
     this.plant = plant;
     this.plant_name = string;
+    console.log(this.plat_name);
     if(getCookie('cFrame')){
 	this.frame = getCookie('cFrame');
 	count = getCookie('cFrame');
     	parseInt(count);
 
-	console.log('look at the frame '+ this.frame + ' look at this cookie ' + getCookie('cFrame'));
     } else {
     	this.frame = 0;
     }
@@ -66,7 +66,7 @@ class Plant{
 }
 function cultivate(plant){
   corn = new Plant(plant, 'corn', 4);
-  var x = getCookie('kFrame');
+  var x = getCookie('cFrame');
   console.log('this is the cookie fresh from the oven' , x)
   if(x){
 	change = false;

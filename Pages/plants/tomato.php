@@ -51,6 +51,8 @@
         <p>
           Drag the watering can over a plant and click on it to water it!
         </p>
+	<div id="thirst" style="color:#9ACD32; font-family: Monaco; font-size:160%;">
+	</div>
         <div>
           <img class = "plant" id = "tomato" src = "../../Photos/tomato/tile0.png" alt = "" width = "250" height = "250"/>
           <p id = 'plant1done'> </p>
@@ -60,24 +62,54 @@
         </div>
         <div id="information1" style="display:none;">
           <p>
-            Some info 1
+           <b>Planting</b>
+<br />- Select a site with full sun and, ideally, a space where tomatoes (and members of their family, especially eggplants, peppers, and potatoes) have not grown in the previous couple of years.<br />- Parsnips need a long growing season, so sow as soon as the soil is workable.
+<br />- Dig soil to about 1 foot deep and mix in aged manure and/or compost. 
+<br />- Give it two weeks to break down before planting.
+<br />- Or, you can plant tomatoes by seed indoors for a head start. Sow seeds a ½ inch deep in small trays 6 to 8 weeks before the average last spring frost date.           </div>
+        <div id="information2" style="display:none;">
+          <p>
+
             </p>
           </div>
         <div id="information2" style="display:none;">
           <p>
-            Some info 2
+<b>Care</b>
+<br />- Water in the early morning so that plants have sufficient moisture to make it through a hot day.
+<br />- Water generously the first few days that the tomato seedlings or transplants are in the ground.
+<br />- Then water with about 2 inches (about 1.2 gallons) per square foot per week during the growing season. 
+<br />- You should have already worked compost into the soil before planting, and added some bonemeal to the planting hole when transplanting.
+<br />- Continue fertilizing tomatoes about every 3 to 4 weeks until frost.
+<br />- If growing vining tomatoes, pinch off suckers (new, tiny stems and leaves between branches and the main stem). This aids air circulation and allows more sunlight into the middle of the plant.
+<br />- If no flowers form, plants may not be getting enough sun or water (too little can stop flowering).
+
             </p>
           </div>
-        <div id="information3" style="display:none;">
+
+
+	<div id="information3" style="display:none;">
           <p>
-            Some info 3
+<b>Harvest/Storage</b>
+<br />- Leave tomatoes on the vine as long as possible.
+<br />- Harvest tomatoes when they are firm and very red in color, regardless of size, with perhaps some yellow remaining around the stem.
+<br />- Never place tomatoes on a sunny windowsill to ripen; they may rot before they are ripe!
+
+
             </p>
           </div>
-        <div id="information4" style="display:none;">
+
+
+	<div id="information4" style="display:none;">
           <p>
-            Some info 4
+            <b>Recommended Varieties</b>:
+            <br />- ‘Early Cascade’: indeterminate trailing plant, fruit in clusters; disease-resistant (Early)
+    	    <br />- ‘Floramerica’: determinate; disease-resistant; firm, deep red flesh, strong plant (Mid-Season)
+            <br />- ‘Tomato, Roma VF’: determinate; compact roma tomatoes; resistant to wilts. Meaty interiors and few seeds; heavy-yielding; good for paste and canning. (Late)
+            <br />
+    <br /><iframe width="560" height="315" src="<iframe width="718" height="406" src="https://www.youtube.com/embed/rZgtvtDlxd4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </p>
           </div>
+
       </div>
       <div id="footer">
       Copyright Â© 2021 The Roots - Austin,Tx
