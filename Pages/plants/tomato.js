@@ -1,6 +1,11 @@
 var found_plant = document.getElementsByClassName('plant');
 var v;
+
 var countdown = "00:20";
+var clock = "00:20";
+var count = 0;
+var change = true;
+
 var watering = new Audio("watering_can_audio.mp3");
 watering.volume = 0.05;
 var final_level = new Audio("save-01.wav");
@@ -19,7 +24,15 @@ class Plant{
   constructor(plant, string, cap){
     this.plant = plant;
     this.plant_name = string;
-    this.frame = 0;
+    if(getCookie('tFrame')){
+	this.frame = getCookie('tFrame');
+    	count = getCookie('tFrame');
+    	parseInt(count);
+
+    } else {
+    	this.frame = 0;
+    }
+
     this.cap = cap;
     this.exists = true;
     this.thirsty = false;
@@ -27,7 +40,10 @@ class Plant{
     document.getElementById(this.plant_name).src = this.level;
   }
   frameup(){
-    this.frame += 1;
+
+    if(change){
+	this.frame++;
+    }
     if (this.frame > this.cap){
       this.frame = this.cap;
       // document.getElementById(this.plant_name + 'done').innerHTML = 'DONE!';
@@ -51,6 +67,17 @@ class Plant{
 }
 function cultivate(plant){
   tomato = new Plant(plant, 'tomato', 4);
+  var x = getCookie('tFrame');
+  console.log('this is the cookie fresh from the oven' , x)
+  if(x){
+	change = false;
+	for(var i=0; i < parseInt(x); i++){
+		  console.log(tomato.frame);
+		  tomato.frameup();
+		reveal(i+1);
+	}
+  } 
+
 }
 
 // The event handler function for grabbing the word
@@ -131,7 +158,11 @@ function water(){
   rotate();
 
   watering.play();
+  change= true;
+  count++;
+
   tomato.frameup();
+  setCookie("tFrame", count, 1*24*60*60);
 }
 
 function thirst_meter(){
@@ -139,8 +170,12 @@ function thirst_meter(){
     if(tomato.frame < 4){
         if (x) {
 	    console.log(x);
+	    clock = getCookie('timerT');
+
+	    startTimer(getCookie('savedTimeT'));
+
     	    document.getElementById("thirst").innerHTML = "I'm quenched! Please come back later!"
-	    + "<br />" + "(" + countdown + ")" + "<br />";
+	    + "<br />" + "(" + clock + ")" + "<br />";
         } else {
 	    document.getElementById("thirst").innerHTML = "I'm thirsty!" + "<br />";
         }
@@ -183,6 +218,9 @@ function startTimer(duration) {
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
         countdown = minutes + ":" + seconds;
+	setCookie("timerT", countdown, duration);	
+	setCookie("savedTimeT", timer, duration);
+
 
         if (--timer < 0) {
             timer = duration;

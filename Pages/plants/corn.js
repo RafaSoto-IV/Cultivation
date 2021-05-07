@@ -1,6 +1,11 @@
 var found_plant = document.getElementsByClassName('plant');
 var v;
+
+var clock = "40:00";
+var count = 0;
 var countdown = "40:00";
+var change = true;
+
 var watering = new Audio("watering_can_audio.mp3");
 watering.volume = 0.05;
 var final_level = new Audio("save-01.wav");
@@ -19,7 +24,15 @@ class Plant{
   constructor(plant, string, cap){
     this.plant = plant;
     this.plant_name = string;
-    this.frame = 0;
+    if(getCookie('cFrame')){
+	this.frame = getCookie('cFrame');
+	count = getCookie('cFrame');
+    	parseInt(count);
+
+	console.log('look at the frame '+ this.frame + ' look at this cookie ' + getCookie('cFrame'));
+    } else {
+    	this.frame = 0;
+    }
     this.cap = cap;
     this.exists = true;
     this.thirsty = false;
@@ -27,7 +40,9 @@ class Plant{
     document.getElementById(this.plant_name).src = this.level;
   }
   frameup(){
-    this.frame += 1;
+    if(change){
+	this.frame++;
+    }
     if (this.frame > this.cap){
       this.frame = this.cap;
       // document.getElementById(this.plant_name + 'done').innerHTML = 'DONE!';
@@ -51,6 +66,17 @@ class Plant{
 }
 function cultivate(plant){
   corn = new Plant(plant, 'corn', 4);
+  var x = getCookie('kFrame');
+  console.log('this is the cookie fresh from the oven' , x)
+  if(x){
+	change = false;
+	for(var i=0; i < parseInt(x); i++){
+		  console.log(corn.frame);
+		  corn.frameup();
+		  reveal(i+1);
+	}
+  } 
+
 }
 
 // The event handler function for grabbing the word
@@ -131,14 +157,23 @@ function water(){
   rotate();
 
   watering.play();
+  change= true;
+  count++;
+
   corn.frameup();
+  setCookie("cFrame", count, 1*60);
+
 }
 
 function thirst_meter(){
-    var x = getCookie('plantWatered');
+    var x = getCookie('corn');
     if(corn.frame < 4){
         if (x) {
 	    console.log(x);
+	    clock = getCookie('timerC');
+
+	    startTimer(getCookie('savedTimeC'));
+
     	    document.getElementById("thirst").innerHTML = "I'm quenched! Please come back later!"
 	    + "<br />" + "(" + countdown + ")" + "<br />";
         } else {
@@ -183,6 +218,9 @@ function startTimer(duration) {
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
         countdown = minutes + ":" + seconds;
+	setCookie("timerC", countdown, duration);	
+	setCookie("savedTimeC", timer, duration);
+
 
         if (--timer < 0) {
             timer = duration;
