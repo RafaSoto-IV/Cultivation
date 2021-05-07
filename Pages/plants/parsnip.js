@@ -2,7 +2,8 @@ var found_plant = document.getElementsByClassName('plant');
 var v;
 var countdown = "00:07";
 var clock = "00:07";
-var count = 0;
+var count=0;
+var change = true;
 
 var watering = new Audio("watering_can_audio.mp3");
 watering.volume = 0.05;
@@ -24,6 +25,9 @@ class Plant{
     this.plant_name = string;
     if(getCookie('pFrame')){
 	this.frame = getCookie('pFrame');
+    	count = getCookie('pFrame');
+    	parseInt(count);
+
     } else {
     	this.frame = 0;
     }
@@ -35,13 +39,17 @@ class Plant{
     document.getElementById(this.plant_name).src = this.level;
   }
   frameup(){
-    count++;
-    this.frame++;
+
+    if(change){
+	this.frame++;
+    }
+    
     if (this.frame > this.cap){
       this.frame = this.cap;
       // document.getElementById(this.plant_name + 'done').innerHTML = 'DONE!';
       clearInterval(timer);
     }else{
+      console.log('inputing into reveal'+ this.frame + i)
       reveal(this.frame);
     }
     this.level = "../../Photos/" + this.plant_name + "/tile" + this.frame + ".png";
@@ -60,6 +68,17 @@ class Plant{
 }
 function cultivate(plant){
   parsnip = new Plant(plant, 'parsnip', 4);
+
+  var x = getCookie('pFrame');
+  console.log('this is the cookie fresh from the oven' , x)
+  if(x){
+	change = false;
+	for(var i=0; i < parseInt(x); i++){
+		  console.log(parsnip.frame);
+		  parsnip.frameup(i);
+		  reveal(i+1);
+	}
+  } 
 }
 
 // The event handler function for grabbing the word
@@ -140,8 +159,14 @@ function water(){
   rotate();
 
   watering.play();
+
+  change= true;
   parsnip.frameup();
+  count++;
   setCookie("pFrame", count, 1*24*60*60);
+
+  console.log('this is the frame ' + getCookie('pFrame'));
+
 }
 
 function thirst_meter(){
