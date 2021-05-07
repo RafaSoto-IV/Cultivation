@@ -87,6 +87,24 @@ header {
     margin-bottom:25px;
 }
 
+.collect{
+    float:right;
+    background-color:mediumseagreen;
+    font-weight:bolder;
+    border:1px solid black;
+    border-radius:5px;
+    padding:5px;
+}
+
+.remove{
+    float:right;
+    background-color:mediumseagreen;
+    font-weight:bolder;
+    border:1px solid black;
+    border-radius:5px;
+    padding:5px;
+}
+
 .plantPic {
     height:180px;
     padding:5px;
