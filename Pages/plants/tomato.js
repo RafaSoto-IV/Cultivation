@@ -4,6 +4,7 @@ var v;
 var countdown = "00:20";
 var clock = "00:20";
 var count = 0;
+var change = true;
 
 var watering = new Audio("watering_can_audio.mp3");
 watering.volume = 0.05;
@@ -25,6 +26,9 @@ class Plant{
     this.plant_name = string;
     if(getCookie('tFrame')){
 	this.frame = getCookie('tFrame');
+    	count = getCookie('tFrame');
+    	parseInt(count);
+
     } else {
     	this.frame = 0;
     }
@@ -36,8 +40,10 @@ class Plant{
     document.getElementById(this.plant_name).src = this.level;
   }
   frameup(){
-    count++;
-    this.frame++;
+
+    if(change){
+	this.frame++;
+    }
     if (this.frame > this.cap){
       this.frame = this.cap;
       // document.getElementById(this.plant_name + 'done').innerHTML = 'DONE!';
@@ -61,6 +67,17 @@ class Plant{
 }
 function cultivate(plant){
   tomato = new Plant(plant, 'tomato', 4);
+  var x = getCookie('tFrame');
+  console.log('this is the cookie fresh from the oven' , x)
+  if(x){
+	change = false;
+	for(var i=0; i < parseInt(x); i++){
+		  console.log(tomato.frame);
+		  tomato.frameup();
+		reveal(i+1);
+	}
+  } 
+
 }
 
 // The event handler function for grabbing the word
@@ -141,6 +158,9 @@ function water(){
   rotate();
 
   watering.play();
+  change= true;
+  count++;
+
   tomato.frameup();
   setCookie("tFrame", count, 1*24*60*60);
 }
