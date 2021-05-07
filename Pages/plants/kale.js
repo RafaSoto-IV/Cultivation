@@ -1,8 +1,10 @@
 var found_plant = document.getElementsByClassName('plant');
 var v;
 
+var countdown = "180:00";
 var clock = "180:00";
 var count = 0;
+var change = true;
 
 var watering = new Audio("watering_can_audio.mp3");
 watering.volume = 0.05;
@@ -24,6 +26,9 @@ class Plant{
     this.plant_name = string;
     if(getCookie('kFrame')){
 	this.frame = getCookie('kFrame');
+	count = getCookie('kFrame');
+    	parseInt(count);
+
     } else {
     	this.frame = 0;
     }
@@ -35,8 +40,10 @@ class Plant{
     document.getElementById(this.plant_name).src = this.level;
   }
   frameup(){
-    count++;
-    this.frame++;
+
+    if(change){
+	this.frame++;
+    }
     if (this.frame > this.cap){
       this.frame = this.cap;
       // document.getElementById(this.plant_name + 'done').innerHTML = 'DONE!';
@@ -60,6 +67,17 @@ class Plant{
 }
 function cultivate(plant){
   kale = new Plant(plant, 'kale', 4);
+  var x = getCookie('kFrame');
+  console.log('this is the cookie fresh from the oven' , x)
+  if(x){
+	change = false;
+	for(var i=0; i < parseInt(x); i++){
+		  console.log(kale.frame);
+		  kale.frameup();
+		reveal(i+1);
+	}
+  } 
+
 }
 
 // The event handler function for grabbing the word
@@ -140,6 +158,9 @@ function water(){
   rotate();
 
   watering.play();
+  change= true;
+  count++;
+
   kale.frameup();
   setCookie("kFrame", count, 1*24*60*60);
 }
