@@ -1,9 +1,9 @@
 var found_plant = document.getElementsByClassName('plant');
 var v;
 
-var clock = "40:00";
+var countdown = "20:00";
+var clock = "20:00";
 var count = 0;
-var countdown = "40:00";
 var change = true;
 
 var watering = new Audio("watering_can_audio.mp3");
@@ -14,6 +14,8 @@ var timer = setInterval(thirst_meter, 1000)
 
 $(function() {
   reveal = function($frame){
+  console.log('choosen '+$frame);
+
     if($frame==4){
         final_level.play();
     }
@@ -24,12 +26,12 @@ class Plant{
   constructor(plant, string, cap){
     this.plant = plant;
     this.plant_name = string;
-    console.log(this.plat_name);
     if(getCookie('cFrame')){
 	this.frame = getCookie('cFrame');
 	count = getCookie('cFrame');
     	parseInt(count);
 
+	console.log('look at the frame '+ this.frame + ' look at this cookie ' + getCookie('CFrame'));
     } else {
     	this.frame = 0;
     }
@@ -43,6 +45,7 @@ class Plant{
     if(change){
 	this.frame++;
     }
+    console.log('look at the frame in frameup '+ this.frame);
     if (this.frame > this.cap){
       this.frame = this.cap;
       // document.getElementById(this.plant_name + 'done').innerHTML = 'DONE!';
@@ -52,6 +55,7 @@ class Plant{
     }
     this.level = "../../Photos/" + this.plant_name + "/tile" + this.frame + ".png";
     document.getElementById(this.plant_name).src = this.level;
+
     //console.log(document.getElementById(this.plant_name));
   }
   framedown(){
@@ -73,7 +77,7 @@ function cultivate(plant){
 	for(var i=0; i < parseInt(x); i++){
 		  console.log(corn.frame);
 		  corn.frameup();
-		  reveal(i+1);
+		reveal(i+1);
 	}
   } 
 
@@ -132,9 +136,7 @@ function check(left, top){
     if (l[0] > left && l[0] < (left + 250)) {
       //console.log(found_plant.id);
       var x = getCookie('corn');
-	console.log("inside field", x);
 	if (x) {
-		console.log(x);
     		//alert('wait some time before watering again! You have ' + countdown + " left");
 	} else {
 		console.log("cookie not found");
@@ -151,31 +153,33 @@ function check(left, top){
 function water(){
   // console.log(corn.plant_name);
 
-  setCookie("corn", "corn", 40*60);
-  startTimer(40*60);
+  setCookie("corn", "corn", 20*60);
+  startTimer(20*60);
   clearTimeout(v);
   rotate();
 
   watering.play();
   change= true;
   count++;
+  console.log(count);
 
   corn.frameup();
-  setCookie("cFrame", count, 1*60);
-
+  setCookie("cFrame", count, 1*24*60*60);
+  console.log('last saved cookie' + getCookie('cFrame'))
 }
 
 function thirst_meter(){
     var x = getCookie('corn');
     if(corn.frame < 4){
         if (x) {
-	    console.log(x);
+	    console.log('frame'+ corn.frame);
+
 	    clock = getCookie('timerC');
 
 	    startTimer(getCookie('savedTimeC'));
 
     	    document.getElementById("thirst").innerHTML = "I'm quenched! Please come back later!"
-	    + "<br />" + "(" + countdown + ")" + "<br />";
+	    + "<br />" + "(" + clock + ")" + "<br />";
         } else {
 	    document.getElementById("thirst").innerHTML = "I'm thirsty!" + "<br />";
         }
@@ -221,11 +225,11 @@ function startTimer(duration) {
 	setCookie("timerC", countdown, duration);	
 	setCookie("savedTimeC", timer, duration);
 
-
         if (--timer < 0) {
             timer = duration;
         }
     }, 1000);
+
 }
 
 function rotate(){
