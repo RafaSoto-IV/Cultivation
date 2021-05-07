@@ -49,7 +49,7 @@ class Plant{
       // document.getElementById(this.plant_name + 'done').innerHTML = 'DONE!';
       clearInterval(timer);
     }else{
-      console.log('inputing into reveal'+ this.frame + i)
+
       reveal(this.frame);
     }
     this.level = "../../Photos/" + this.plant_name + "/tile" + this.frame + ".png";
