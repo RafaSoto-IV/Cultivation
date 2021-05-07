@@ -106,8 +106,7 @@
     	    <br />- ‘Floramerica’: determinate; disease-resistant; firm, deep red flesh, strong plant (Mid-Season)
             <br />- ‘Tomato, Roma VF’: determinate; compact roma tomatoes; resistant to wilts. Meaty interiors and few seeds; heavy-yielding; good for paste and canning. (Late)
             <br />
-    <br /><iframe width="560" height="315" src="<iframe width="718" height="406" src="https://www.youtube.com/embed/rZgtvtDlxd4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </p>
+    <br /><iframe width="718" height="406" src="https://www.youtube.com/embed/rZgtvtDlxd4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>            </p>
           </div>
 
       </div>
