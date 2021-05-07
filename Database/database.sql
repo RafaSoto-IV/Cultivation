@@ -19,14 +19,16 @@ plantType   TEXT,
 PRIMARY KEY (id)
 );
 
-@@ -15,40 +25,99 @@ pswd        VARBINARY(10),
+CREATE TABLE Users (
+userName    VARBINARY(10),
+pswd        VARBINARY(10),
 PRIMARY KEY (userName)
 );
 
 CREATE TABLE Collections (
 userName    VARBINARY(10),
 id          INT
-)
+);
 
 INSERT INTO Plants VALUES
     (
